@@ -16,7 +16,7 @@
         }
 
         include_once("rib.class.php");
-        $validator = new RIBValidator("12345", "67890", "000A56b77H88", "87");
+        $validator = new RIBValidator("12345", "67890", "000A56b77H88", "92");
         my_var_dump($validator);
         if ($validator->isValid()) {
             echo "<p>Ce RIB est valide</p>";
