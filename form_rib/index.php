@@ -9,23 +9,54 @@
 </head>
 <body>
     <div class="container">
+        <?php
+            if (isset($_GET["notif"])) {
+                switch ($_GET["notif"]) {
+                    case "ok": ?>
+
+                        <div class="alert alert-success" role="alert">
+                            RIB valide !
+                        </div>
+
+                        <?php
+                        break;
+
+                    case "nok": ?>
+
+                        <div class="alert alert-danger" role="alert">
+                            RIB non valide !
+                        </div>
+
+                        <?php
+                        break;
+
+                    default: ?>
+
+                        <div class="alert alert-warning" role="alert">
+                            Paramètre étrange !
+                        </div>
+
+                    <?php
+                }
+            }                    
+        ?>
         <h1>RIB Vérification</h1>
         <form action="valid.php" method="post">
             <div class="mb-3">
                 <label for="bankcode" class="form-label">Code banque</label>
-                <input type="number" name="bankcode" id="bankcode" class="form-control">
+                <input type="text" minlength="5" maxlength="5" pattern="[0-9]{5}" name="bankcode" id="bankcode" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="agencycode" class="form-label">Code agence</label>
-                <input type="number" name="agencycode" id="agencycode" class="form-control">
+                <input type="text" minlength="5" maxlength="5" pattern="[0-9]{5}" name="agencycode" id="agencycode" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="account" class="form-label">Compte</label>
-                <input type="text" name="account" id="account" class="form-control">
+                <input type="text" minlength="11" maxlength="11" pattern="[0-9a-zA-Z]{11}" name="account" id="account" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="key" class="form-label">Clé RIB</label>
-                <input type="number" name="key" id="key" class="form-control">
+                <input type="text" minlength="2" maxlength="2" pattern="[0-9]{2}" name="key" id="key" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
